@@ -1,40 +1,17 @@
-function foo(callback) {
-    console.log("Hi, Tom!")
-    callback();
-}
+document.addEventListener("DOMContentLoaded", () => {
+	const button = document.getElementById("submitBtn");
 
-function bar() {
-    console.log("Hi, Ken!")
-}
+	if (!button) return;
 
-foo(bar);
+	button.addEventListener("click", () => {
+		let message = document.getElementById("clickMessage");
 
-const sonicBoom = () => {
-    return 20;
-}
+		if (!message) {
+			message = document.createElement("p");
+			message.id = "clickMessage";
+			button.insertAdjacentElement("afterend", message);
+		}
 
-console.log(sonicBoom());
-
-function metalBurst(lastdamage) {
-    return lastdamage *= 1.5;
-
-}
-
-console.log(metalBurst(50));
-
-function hornDrill(theirHp) {
-    if (Math.random() <= 0.3) {
-        return theirHp;
-    } else {
-        return 0;
-    }
-}
-
-console.log(hornDrill(100));
-function thunderWave() {
-    if (Math.random() <= 0.9) {
-        return "Paralyzed";
-    } else {
-        return "Not Paralyzed";
-    }
-}
+		message.textContent = "ボタンを押しました";
+	});
+});
